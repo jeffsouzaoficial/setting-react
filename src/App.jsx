@@ -63,6 +63,11 @@ function cadastrarPaciente() {
 }
 
 function encerrarTratamento(id) {
+  const confirmou = confirm("Deseja encerrar o tratamento deste paciente?")
+
+  if (confirmou === false) {
+    return
+  }
   setPacientes(
     pacientes.map((paciente) =>
       paciente.id === id ? { ...paciente, ativo: false } : paciente
