@@ -146,6 +146,7 @@ function encerrarTratamento(id) {
         horario={paciente.horario} 
         valor={paciente.valor}
         encerrarTratamento={encerrarTratamento}
+        ativo={paciente.ativo}
         />
       ))}
     </div>
