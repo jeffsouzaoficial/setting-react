@@ -25,14 +25,16 @@ function App() {
 
   const pacientesFiltrados = pacientes.filter((paciente) => paciente.dia === diaEscolhido)
 
-  const faturamentoSemanal = pacientes.reduce((total, paciente) => total + paciente.valor, 0)
+  const pacientesAtivos = pacientes.filter((paciente) => paciente.ativo === true)
 
-  const minutosSemanais = pacientes.reduce((total, paciente) => total + paciente.duracao, 0)
+  const faturamentoSemanal = pacientesAtivos.reduce((total, paciente) => total + paciente.valor, 0)
+
+  const minutosSemanais = pacientesAtivos.reduce((total, paciente) => total + paciente.duracao, 0)
 
   const horas = Math.floor(minutosSemanais / 60)
   const minutosRestantes = minutosSemanais % 60
 
-  const pacientesAtivos = pacientes.filter((paciente) => paciente.ativo === true)
+  
 
 
 function cadastrarPaciente() {
