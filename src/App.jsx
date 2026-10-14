@@ -44,7 +44,7 @@ function cadastrarPaciente() {
   }
 
   const horarioOcupado = pacientes.some(
-    (paciente) => paciente.dia === novoDia && paciente.horario === novoHorario
+    (paciente) => paciente.dia === novoDia && paciente.horario === novoHorario && paciente.ativo === true
   )
 
   if (horarioOcupado) {
