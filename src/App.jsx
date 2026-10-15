@@ -7,10 +7,10 @@ function App() {
   const pacientesSalvos = JSON.parse(localStorage.getItem("setting-pacientes"))
 
   const [pacientes, setPacientes] = useState(pacientesSalvos || [
-    { id: 1, nome: "Anna Karenina", dia: "Segunda",horario:"14:00", valor: 200, duracao: 50, ativo: true },
-    { id: 2, nome: "Sherlock Holmes", dia: "Terça",horario:"15:00", valor: 200, duracao: 50, ativo: true },
-    { id: 3, nome: "Dom Casmurro", dia: "Quarta",horario:"13:00", valor: 200, duracao: 50, ativo: false },
-    { id: 4, nome: "Emma Bovary", dia: "Quarta",horario:"14:00", valor: 200, duracao: 50, ativo: true },
+    { id: 1, nome: "Anna Karenina", dia: "Segunda",horario:"14:00", valor: 200, duracao: 50, ativo: true, whatsapp: "5511900000001" },
+    { id: 2, nome: "Sherlock Holmes", dia: "Terça",horario:"15:00", valor: 200, duracao: 50, ativo: true, whatsapp: "5511900000002" },
+    { id: 3, nome: "Dom Casmurro", dia: "Quarta",horario:"13:00", valor: 200, duracao: 50, ativo: false, whatsapp: "5511900000003" },
+    { id: 4, nome: "Emma Bovary", dia: "Quarta",horario:"14:00", valor: 200, duracao: 50, ativo: true, whatsapp: "5511900000004" },
   ])
 
   
@@ -159,6 +159,7 @@ function encerrarTratamento(id) {
         valor={paciente.valor}
         encerrarTratamento={encerrarTratamento}
         ativo={paciente.ativo}
+        whatsapp={paciente.whatsapp}
         />
       ))}
     </div>

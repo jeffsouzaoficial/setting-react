@@ -1,4 +1,7 @@
 function Paciente(props) {
+
+  const link = `https://wa.me/${props.whatsapp}`
+
   return (
     <div>
       <h2>{props.nome}</h2>
@@ -10,6 +13,7 @@ function Paciente(props) {
       ) : (
         <p>Tratamento Encerrado</p>
       )}
+      <a href={link} target="_blank">Conversar no WhatsApp</a>
     </div>
   )
 }
