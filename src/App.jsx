@@ -27,6 +27,8 @@ function App() {
 
   const [novaDuracao, setNovaDuracao] = useState("")
 
+  const [novoWhatsapp, setNovoWhatsapp] = useState("")
+
 
   useEffect(() => {
     localStorage.setItem("setting-pacientes", JSON.stringify(pacientes))
@@ -50,7 +52,7 @@ function App() {
 
 
 function cadastrarPaciente() {
-  if (novoNome === "" || novoDia === "" || novoHorario === "" || novoValor === "" || novaDuracao === "") {
+  if (novoNome === "" || novoDia === "" || novoHorario === "" || novoValor === "" || novaDuracao === "" || novoWhatsapp === "" ) {
     alert("Preencha todos os campos.")
     return
   }
@@ -72,6 +74,7 @@ function cadastrarPaciente() {
     valor: Number(novoValor),
     duracao: Number(novaDuracao),
     ativo: true,
+    whatsapp: novoWhatsapp
   }
   setPacientes([...pacientes, novoPaciente])
 }
@@ -106,6 +109,13 @@ function encerrarTratamento(id) {
         onChange={(evento) => setNovoNome(evento.target.value)}
       />
 
+      <input 
+        type="tel"
+        placeholder="Whatsapp do paciente"
+        value={novoWhatsapp}
+        onChange={(evento) => setNovoWhatsapp(evento.target.value)}
+      />
+
       <select value={novoDia} onChange={(evento) => setNovoDia(evento.target.value)}>
         <option value="Segunda">Segunda</option>
         <option value="Terça">Terça</option>
@@ -136,7 +146,6 @@ function encerrarTratamento(id) {
       />
 
       <button onClick={cadastrarPaciente}>Cadastrar</button>
-      <p>Prévia: {novoNome} | {novoHorario} | {novoValor} | {novaDuracao} | {novoDia}</p>
 
 
       <h2>Agenda</h2>
