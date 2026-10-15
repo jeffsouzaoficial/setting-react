@@ -3,12 +3,17 @@ import { useState, useEffect } from 'react'
 import Paciente from "./components/Paciente";
 
 function App() {
-  const [pacientes, setPacientes] = useState([
+
+  const pacientesSalvos = JSON.parse(localStorage.getItem("setting-pacientes"))
+
+  const [pacientes, setPacientes] = useState(pacientesSalvos || [
     { id: 1, nome: "Anna Karenina", dia: "Segunda",horario:"14:00", valor: 200, duracao: 50, ativo: true },
     { id: 2, nome: "Sherlock Holmes", dia: "Terça",horario:"15:00", valor: 200, duracao: 50, ativo: true },
     { id: 3, nome: "Dom Casmurro", dia: "Quarta",horario:"13:00", valor: 200, duracao: 50, ativo: false },
     { id: 4, nome: "Emma Bovary", dia: "Quarta",horario:"14:00", valor: 200, duracao: 50, ativo: true },
   ])
+
+  
 
   const [diaEscolhido, setDiaEscolhido] = useState("Segunda")
 
@@ -22,10 +27,13 @@ function App() {
 
   const [novaDuracao, setNovaDuracao] = useState("")
 
+
   useEffect(() => {
     localStorage.setItem("setting-pacientes", JSON.stringify(pacientes))
   }, [pacientes])
 
+
+  
 
   const pacientesFiltrados = pacientes.filter((paciente) => paciente.dia === diaEscolhido)
 
