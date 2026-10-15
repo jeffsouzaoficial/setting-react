@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import Paciente from "./components/Paciente";
 
@@ -21,6 +21,10 @@ function App() {
   const [novoValor, setNovoValor] = useState("")
 
   const [novaDuracao, setNovaDuracao] = useState("")
+
+  useEffect(() => {
+    localStorage.setItem("setting-pacientes", JSON.stringify(pacientes))
+  }, [pacientes])
 
 
   const pacientesFiltrados = pacientes.filter((paciente) => paciente.dia === diaEscolhido)
