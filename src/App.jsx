@@ -29,12 +29,24 @@ function App() {
 
   const [novoWhatsapp, setNovoWhatsapp] = useState("")
 
+  const [feriados, setFeriados] = useState([])
+
+  const anoAtual = new Date().getFullYear()
+
 
   useEffect(() => {
     localStorage.setItem("setting-pacientes", JSON.stringify(pacientes))
   }, [pacientes])
 
+  useEffect(() => {
+  async function buscarFeriados() {
+    const resposta = await fetch(`https://brasilapi.com.br/api/feriados/v1/${anoAtual}`)
+    const dados = await resposta.json()
+    setFeriados(dados)
+  }
 
+  buscarFeriados()
+}, [])
   
 
   const pacientesFiltrados = pacientes.filter((paciente) => paciente.dia === diaEscolhido)
@@ -171,7 +183,15 @@ function encerrarTratamento(id) {
         whatsapp={paciente.whatsapp}
         />
       ))}
+
+      <h2>Feriados de {anoAtual}</h2>
+        <ul>
+          {feriados.map((feriado) => (
+            <li key={feriado.date}>{feriado.date} — {feriado.name}</li>
+          ))}
+        </ul>
     </div>
+    
   )
 }
 

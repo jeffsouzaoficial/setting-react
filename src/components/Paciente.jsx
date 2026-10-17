@@ -13,6 +13,7 @@ function Paciente(props) {
       ) : (
         <p>Tratamento Encerrado</p>
       )}
+      
       <a href={link} target="_blank">Conversar no WhatsApp</a>
     </div>
   )
