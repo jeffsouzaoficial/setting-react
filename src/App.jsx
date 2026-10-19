@@ -51,6 +51,8 @@ function App() {
 
   const pacientesFiltrados = pacientes.filter((paciente) => paciente.dia === diaEscolhido)
 
+  const pacientesOrdenados = [...pacientesFiltrados].sort((a, b) => a.horario.localeCompare(b.horario))
+
   const pacientesAtivos = pacientes.filter((paciente) => paciente.ativo === true)
 
   const faturamentoSemanal = pacientesAtivos.reduce((total, paciente) => total + paciente.valor, 0)
@@ -98,6 +100,13 @@ function App() {
       whatsapp: novoWhatsapp
     }
     setPacientes([...pacientes, novoPaciente])
+
+    setNovoNome("")
+    setNovoHorario("")
+    setNovoValor("")
+    setNovaDuracao("")
+    setNovoWhatsapp("")
+    setNovoDia("Segunda")
   }
 
   function encerrarTratamento(id) {
@@ -179,7 +188,7 @@ function App() {
         <option value="Sexta">Sexta</option>
       </select>
 
-      {pacientesFiltrados.map((paciente) => (
+      {pacientesOrdenados.map((paciente) => (
         <Paciente
           key={paciente.id}
           id={paciente.id}
