@@ -67,6 +67,10 @@ function App() {
     return diasDaSemana[numero]
   }
 
+  function pacientesDoFeriado(data) {
+    const dia = descobrirDia(data)
+    return pacientesAtivos.filter((paciente) => paciente.dia === dia)
+  }
 
   function cadastrarPaciente() {
     if (novoNome === "" || novoDia === "" || novoHorario === "" || novoValor === "" || novaDuracao === "" || novoWhatsapp === "") {
@@ -192,7 +196,7 @@ function App() {
       <h2>Feriados de {anoAtual}</h2>
       <ul>
         {feriados.map((feriado) => (
-          <li key={feriado.date}>{feriado.date} — {feriado.name} ({descobrirDia(feriado.date)})</li>
+          <li key={feriado.date}>{feriado.date} — {feriado.name} ({descobrirDia(feriado.date)}): {pacientesDoFeriado(feriado.date).length} paciente(s)</li>
         ))}
       </ul>
     </div>
