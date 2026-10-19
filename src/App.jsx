@@ -196,7 +196,7 @@ function App() {
       <h2>Feriados de {anoAtual}</h2>
       <ul>
         {feriados.map((feriado) => (
-          <li key={feriado.date}>{feriado.date} — {feriado.name} ({descobrirDia(feriado.date)}): {pacientesDoFeriado(feriado.date).length} paciente(s)</li>
+          <li key={feriado.date}>{feriado.date} — {feriado.name} ({descobrirDia(feriado.date)}): {pacientesDoFeriado(feriado.date).length} paciente(s) — {pacientesDoFeriado(feriado.date).map((paciente) => paciente.nome).join(", ")}</li>
         ))}
       </ul>
     </div>
